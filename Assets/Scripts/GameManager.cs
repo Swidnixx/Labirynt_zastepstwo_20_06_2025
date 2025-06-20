@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -131,6 +132,38 @@ public class GameManager : MonoBehaviour
             Debug.Log("Actual Time: " + timeToEnd);
             Debug.Log("Key red: " + redKey + " green: " + greenKey + " gold: " + goldKey);
             Debug.Log("Points: " + points);
+        }
+    }
+
+    public bool HasKey(KeyColor properKey)
+    {
+        switch (properKey)
+        {
+            case KeyColor.Red:
+                return redKey > 0;
+                
+            case KeyColor.Green:
+                return greenKey > 0;
+         
+            case KeyColor.Gold:
+                return goldKey > 0;
+        }
+
+        return false;
+    }
+    public void UseKey(KeyColor properKey)
+    {
+        switch (properKey)
+        {
+            case KeyColor.Red:
+                redKey--;
+                break;
+            case KeyColor.Green:
+                greenKey--;
+                break;
+            case KeyColor.Gold:
+                goldKey--;
+                break;
         }
     }
 }
